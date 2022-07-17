@@ -1,6 +1,6 @@
 # bipbup
 
-A lua-based Discord bot that adds roles throught message reactions with Discordia API.
+A lua-based Discord bot that adds roles throught messages with **[Discordia](https://github.com/SinisterRectus/Discordia)** API.
 
 ## How to use
 
@@ -8,4 +8,4 @@ Follow **[Discordia](https://github.com/SinisterRectus/Discordia)** installation
 
 ## Syntax
 
-`.addRole [yourRoleName] [#HexValue]`
+Simply say `.addRole [yourRoleName] [#HexValue]` in any text channel. The prefix variable can be changed inside main.lua.

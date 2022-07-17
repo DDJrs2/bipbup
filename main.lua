@@ -87,4 +87,4 @@ client:on("messageCreate", function (message)
     end
 end)
 
-client:run("Bot " .. args[2]) -- replace BOT_TOKEN with your bot token
+client:run("Bot " .. args[2])

@@ -41,6 +41,6 @@ luac.out
 
 *.log
 /deps
-data/*
+./data
 /.*
 gateway.json
