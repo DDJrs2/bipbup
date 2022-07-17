@@ -8,4 +8,5 @@ Follow **[Discordia](https://github.com/SinisterRectus/Discordia)** installation
 
 ## Syntax
 
-Simply say `.addRole [yourRoleName] [#HexValue]` in any text channel. The prefix variable can be changed inside main.lua.
+Simply say `.addRole "[yourRoleName]" #[HexValue]` in any text channel. The prefix variable can be changed inside main.lua.
+Example: `.addRole "Average Lua enjoyer" #00ff00`
