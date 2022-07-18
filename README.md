@@ -1,6 +1,6 @@
 # bipbup
 
-A lua-based Discord bot that adds roles throught messages with **[Discordia](https://github.com/SinisterRectus/Discordia)** API.
+A lua-based Discord bot that adds and gives roles throught messages with **[Discordia](https://github.com/SinisterRectus/Discordia)** API.
 
 ## How to use
 
