@@ -1,3 +1,8 @@
+if not args[2] then
+    print("Please specify a token!");
+    os.exit();
+end
+
 local discordia = require('discordia');
 local client = discordia.Client();
 local color = discordia.Color();
@@ -5,19 +10,14 @@ local jsonIO = require("./jsonIO");
 local prefix = ".";
 discordia.extensions();
 
-if not args[2] then
-    print("Please specify a token!");
-    os.exit();
-end
-
 local function getName(str)
     for i = 1, str:len() do
         if str:sub(i,i) == '"' then
-           for j = i+1, str:len() do
+            for j = i+1, str:len() do
                 if str:sub(j,j) == '"' then
                     return str:sub(i+1, j-1);
                 end
-           end
+            end
         end
     end
 end
@@ -63,7 +63,8 @@ end
 
 local commands = {
     [prefix .. "addRole"] = {
-        description = "Creates a custom role for you! If you already asked for one, then your role will be replaced by the new one!\n    -*Syntax.* `addRole \"[Name]\" #[HexValue]` e.g: `.addRole \"Average Lua enjoyer, なのら！\" #ff80fd`",
+        description = "Creates a custom role for you! If you already asked for one, then your role will be replaced by the new one!\n    \
+            -*Syntax.* `addRole \"[Name]\" #[HexValue]` e.g: `.addRole \"Average Lua enjoyer, なのら！\" #ff80fd`",
         exec = function (message, args)
             local name = '';
             local hex = '';
@@ -122,7 +123,6 @@ local commands = {
                     ["roleID"] = role.id,
                 });
             end
-
             jsonIO.writeJson(message.guild.name .. ".json", userInfo);
 
             message.member:addRole(role.id);
@@ -140,17 +140,17 @@ local function help(message)
 end
 
 client:on('ready', function ()
-    p(string.format('Logged in as %s', client.user.username))
+    p(string.format('Logged in as %s', client.user.username));
 end)
 
 client:on("messageCreate", function (message)
     if message.author.bot or not message.guild then return end
-    local args = message.content:split(" ");
 
+    local args = message.content:split(" ");
     local command = commands[args[1]];
     if command then
         command.exec(message, args);
-    elseif args[1] == prefix.."help" then
+    elseif args[1] == prefix .. "help" then
         help(message);
     end
 end)
