@@ -10,18 +10,6 @@ local jsonIO = require("./jsonIO");
 local prefix = ".";
 discordia.extensions();
 
-local function getName(str)
-    for i = 1, str:len() do
-        if str:sub(i,i) == '"' then
-            for j = i+1, str:len() do
-                if str:sub(j,j) == '"' then
-                    return str:sub(i+1, j-1);
-                end
-            end
-        end
-    end
-end
-
 local function isHex(x)
     return string.byte(x) <= string.byte('f') and string.byte(x) >= string.byte('0');
 end
@@ -31,10 +19,10 @@ local function getHex(str)
     for i = 1, str:len() do
         if str:sub(i,i) == '#' then
             for j = i+1, str:len() do
-                local letter = str:sub(j,j);
-                if letter == ' ' or hexQtd == 6 or not isHex(letter:lower()) then
+                local letter = str:sub(j,j):lower();
+                if letter == ' ' or hexQtd == 6 or not isHex(letter) then
                     break;
-                elseif isHex(letter:lower()) and letter ~= nil then
+                elseif isHex(letter) and letter ~= nil then
                     hexQtd = hexQtd + 1;
                 end
             end
@@ -54,11 +42,7 @@ local function checkSyntax(arguments)
             quotationQuantity = quotationQuantity + 1;
         end
     end
-    if quotationQuantity == 2 then
-        return true;
-    else
-        return false;
-    end
+    return quotationQuantity == 2;
 end
 
 local commands = {
@@ -70,7 +54,8 @@ local commands = {
             local hex = '';
             local argument = table.concat(args, ' ', 2);
             if checkSyntax(argument) then
-                name = getName(argument);
+                local i, j = argument:find("([\"'])(.-)%1");
+                name = argument:sub(i+1, j-1);
                 hex = getHex(argument);
                 if hex == nil then
                     message:reply("The hex syntax is wrong!");
