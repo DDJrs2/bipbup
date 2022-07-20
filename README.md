@@ -6,12 +6,9 @@ A lua-based Discord bot that adds and gives roles throught messages with **[Disc
 
 After you clone this repository, follow **[Discordia](https://github.com/SinisterRectus/Discordia)**'s installation guide inside the repository's folder. To start the bot, just execute `luvit main.lua [TOKEN]` in the console or cmd while inside the folder, where `[TOKEN]` is your bot's token that you get after creating a discord application online.
 
-## Syntax
+## Commands
 
-Simply say `.addRole "[yourRoleName]" #[HexValue]` in any text channel. The prefix variable can be changed inside main.lua.
+Commands should be followed by the default prefix ".", or you own if you customized it.
 
-Usage Examples:
-
-`.addRole "Average Lua enjoyer" #00ff00`
-
-`.addRole #ff80fd "ルア語"`
+- `addRole` to give the message's author a custom role with a color. e.g. `.addRole "Average Lua enjoyer" #ff80fd`
+- `question` to answer a yes or no question with something random, made for lol porpuses. e.g. `.question is air safe to breathe?`
