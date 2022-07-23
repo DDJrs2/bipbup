@@ -12,3 +12,4 @@ Commands should be followed by the default prefix ".", or you own if you customi
 
 - `addRole` to give the message's author a custom role with a color. e.g. `.addRole "Average Lua enjoyer" #ff80fd`
 - `question` to answer a yes or no question with something random, made for lol porpuses. e.g. `.question is air safe to breathe?`
+- `@YourBotName` to send the list of available commands

@@ -5,13 +5,14 @@ end
 
 local discordia = require('discordia');
 local client = discordia.Client();
-local commands = require("./commands");
+local handler = require("./commandsHandler");
 local prefix = ".";
+local prefixLenght = prefix:len();
 discordia.extensions();
 
 local function help(message)
     local output = {};
-    for word, tbl in pairs(commands) do
+    for word, tbl in pairs(handler["commands"]) do
         table.insert(output, "`" .. word .. "`\n    -" .. tbl.description);
     end
     table.sort(output);
@@ -23,13 +24,11 @@ client:on('ready', function ()
 end)
 
 client:on("messageCreate", function (message)
-    if message.author.bot or not message.guild then return end
+    if message.author.bot then return end
 
-    local args = message.content:sub(prefix:len()+1, -1):split(" ");
-    local command = commands[args[1]];
-    if command then
-        command.exec(message, args, client);
-    elseif args[1] == "help" then
+    if message.content:sub(1, prefixLenght) == prefix then
+        handler.execute(message, message.content:sub(prefixLenght+1, -1):split(" "), client);
+    elseif message.content == "<@" .. client.user.id .. ">" then
         help(message);
     end
 end)
