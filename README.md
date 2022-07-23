@@ -4,7 +4,7 @@ A lua-based Discord bot that adds and gives roles throught messages with **[Disc
 
 ## How to use
 
-After you clone this repository, follow **[Discordia](https://github.com/SinisterRectus/Discordia)**'s installation guide inside the repository's folder. To start the bot, just execute `luvit main.lua [TOKEN]` in the console or cmd while inside the folder, where `[TOKEN]` is your bot's token that you get after creating a discord application online.
+After you clone this repository, follow **[Discordia](https://github.com/SinisterRectus/Discordia)**'s installation guide inside the repository's folder. To start the bot, just execute `luvit main.lua [TOKEN]` in the terminal or command prompt while inside the folder, where `[TOKEN]` is your bot's token that you get after creating a discord application online.
 
 ## Commands
 
